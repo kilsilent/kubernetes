@@ -36,7 +36,7 @@ import (
 	netutils "k8s.io/utils/net"
 )
 
-const duration365d = time.Hour * 24 * 365
+const duration365d = time.Hour * 24 * 365 
 
 // Config contains the basic fields required for creating a certificate
 type Config struct {
@@ -65,7 +65,7 @@ func NewSelfSignedCACert(cfg Config, key crypto.Signer) (*x509.Certificate, erro
 		},
 		DNSNames:              []string{cfg.CommonName},
 		NotBefore:             now.UTC(),
-		NotAfter:              now.Add(duration365d * 10).UTC(),
+		NotAfter:              now.Add(duration365d * 100).UTC(),
 		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 		BasicConstraintsValid: true,
 		IsCA:                  true,
